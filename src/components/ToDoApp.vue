@@ -143,7 +143,7 @@
 .lists {
   margin: 0 auto;
   margin-top: 40px;
-  height: 500px;
+  height: 440px;
   width: 550px;
   overflow: auto;
 }
