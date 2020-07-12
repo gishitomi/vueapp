@@ -2,7 +2,7 @@ import Vue from "vue";
 import VueRouter, { RouteConfig } from "vue-router";
 import VueTimer from "../views/VueTimer.vue";
 import VueToDo from "../views/VueToDo.vue";
-import Home from "..//views/Introduction.vue";
+import Home from "../views/Introduction.vue";
 
 Vue.use(VueRouter);
 
@@ -21,7 +21,7 @@ const routes: Array<RouteConfig> = [
     path: "/vuetodo",
     name: "VueToDo",
     component: VueToDo
-  }
+  },
 ];
 
 const router = new VueRouter({

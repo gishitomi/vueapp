@@ -28,14 +28,16 @@
       <v-card max-width="1000" outlined class="lists">
         <h5>ToDo</h5>
         <div v-for="(todo,i) in todos" v-bind:key="i">
-          <div v-bind:key="i" class="todo-list" v-bind:class="{done: todo.isDone}">
-            <p id="num" style="margin-bottom:0;">{{i}}.</p>
+          <div class="todo-list" v-bind:class="{done: todo.isDone}">
+            <p id="num" style="margin-bottom:0;">{{todo.id}}.</p>
             <v-checkbox v-model="todo.isDone" color="green"></v-checkbox>
             <div class="message">
               <p class="main-message" style="margin-bottom:0;">{{todo.item}}</p>
               <p class="detail-message" style="margin-bottom:0;">{{todo.detail}}</p>
             </div>
-            <v-icon color="red" v-on:click.stop="dialog = true">mdi-trash-can</v-icon>
+            <v-btn x-small depressed color="red" fab v-on:click.stop="dialog = true">
+              <i class="fas fa-trash-alt fa-lg" style="color: white;"></i>
+            </v-btn>
             <v-dialog v-model="dialog" max-width="290">
               <v-card>
                 <v-card-title class="headline">この項目を削除</v-card-title>
@@ -81,7 +83,7 @@
       <v-card outlined max-width="1000" class="lists">
         <h5>Done</h5>
         <div v-for="(done, i) in dones" v-bind:key="i" v-show="done.isDone" class="todo-list">
-          <p id="num" style="margin-bottom:0;">{{i}}.</p>
+          <p id="num" style="margin-bottom:0;">{{done.id}}.</p>
           <v-checkbox v-model="done.isDone" color="green"></v-checkbox>
           <div class="message">
             <p class="done-text main-message" style="margin-bottom:0;">{{done.item}}</p>
@@ -200,18 +202,20 @@
 export default {
   name: "todo-app",
   data: () => ({
+    inputId: 1,
     newItem: "",
     newDetail: "",
     newPriority: null,
     todos: [],
     dones: [],
     dialog: false,
-    dialogDelete: false
+    dialogDelete: false,
   }),
   methods: {
     addTodo() {
       if (this.newItem === "") return;
       const todo = {
+        id: this.inputId,
         item: this.newItem,
         detail: this.newDetail,
         isDone: false,
@@ -221,6 +225,7 @@ export default {
       this.dones.push(todo);
       this.newItem = "";
       this.newDetail = "";
+      this.inputId++;
       this.newPriority = null;
     },
     deleteBtn(i) {

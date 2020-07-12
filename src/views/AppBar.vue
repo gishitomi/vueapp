@@ -12,7 +12,7 @@
       </router-link>
     </div>
   </header>
-</template>>
+</template>
 
 <style scoped>
 header {

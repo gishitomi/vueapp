@@ -1,6 +1,6 @@
 <template>
   <div>
-    <todo-app/>
+    <todo-app />
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import TodoApp from "@/components/ToDoApp.vue";
 export default {
   name: "todo",
   components: {
-    TodoApp
+    TodoApp,
   }
 };
 </script>
